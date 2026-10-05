@@ -1,6 +1,4 @@
 import { siteConfig } from '@/lib/config'
-import { useRef } from 'react'
-import { handleEmailClick } from '@/lib/plugins/mailEncrypt'
 
 /**
  * 社交联系方式按钮组
@@ -8,9 +6,6 @@ import { handleEmailClick } from '@/lib/plugins/mailEncrypt'
  * @constructor
  */
 const SocialButton = () => {
-  const CONTACT_EMAIL = siteConfig('CONTACT_EMAIL')
-  const emailIcon = useRef(null)
-
   return (
     <div className='w-52 justify-center flex-wrap flex my-2'>
       <div className='space-x-5 md:text-xl text-3xl text-gray-600 dark:text-gray-400 text-center'>
@@ -63,8 +58,7 @@ const SocialButton = () => {
           <a
             target='_blank'
             rel='noreferrer'
-            href={siteConfig('CONTACT_CSDN')}
-            title={'CSDN'}>
+            href={siteConfig('CONTACT_CSDN')}>
             <i className='fab fa-csdn transform hover:scale-125 duration-150' />
           </a>
         )}
@@ -77,7 +71,6 @@ const SocialButton = () => {
             <i className='fab fa-juejin transform hover:scale-125 duration-150' />
           </a>
         )}
-
         {siteConfig('CONTACT_WEIBO') && (
           <a
             target='_blank'
@@ -94,19 +87,6 @@ const SocialButton = () => {
             title={'instagram'}
             href={siteConfig('CONTACT_INSTAGRAM')}>
             <i className='fab fa-instagram transform hover:scale-125 duration-150' />
-          </a>
-        )}
-        {CONTACT_EMAIL && (
-          <a
-            onClick={e =>
-              handleEmailClick(e, emailIcon, CONTACT_EMAIL)
-            }
-            target='_blank'
-            rel='noreferrer'
-            className='cursor-pointer'
-            title={'email'}
-            ref={emailIcon}>
-            <i className='fas fa-envelope transform hover:scale-125 duration-150' />
           </a>
         )}
         {JSON.parse(siteConfig('ENABLE_RSS')) && (
