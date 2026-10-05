@@ -56,7 +56,8 @@ export const MenuList = ({ customNav, customMenu }) => {
   ]
 
   if (customNav) {
-    links = links.concat(customNav)
+    // 隐藏默认的 English 菜单项
+    links = links.concat(customNav.filter(link => link?.name !== 'English'))
   }
 
   // 如果 开启自定义菜单，则覆盖Page生成的菜单
