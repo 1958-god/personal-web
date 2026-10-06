@@ -33,7 +33,7 @@ export default function NavBar(props) {
   }
 
   return (
-    <nav className='w-full bg-white md:pt-0  relative z-20 shadow border-t border-gray-100 dark:border-hexo-black-gray dark:bg-black'>
+    <nav className='w-full bg-white md:pt-0 relative z-20 shadow border-t border-gray-100 dark:border-hexo-black-gray dark:bg-black'>
       <div
         id='nav-bar-inner'
         className='h-12 mx-auto max-w-9/10 justify-between items-center text-sm md:text-md md:justify-start'>
@@ -55,7 +55,7 @@ export default function NavBar(props) {
           {!showSearchInput && <MenuList {...props} />}
         </div>
 
-        <div className='absolute right-12 h-full text-center px-2 flex items-center text-blue-400  cursor-pointer'>
+        <div className='absolute right-12 h-full text-center px-2 flex items-center text-blue-400 cursor-pointer'>
           {/* <!-- extra links --> */}
           <i
             className={
