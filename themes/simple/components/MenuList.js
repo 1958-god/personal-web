@@ -55,13 +55,35 @@ export const MenuList = ({ customNav, customMenu }) => {
     }
   ]
 
-  if (customNav) {
-    links = links.concat(customNav.filter(link => link?.name !== 'English'))
+  // 将原来的 English 菜单项替换为“首页”，保持原来的位置
+  const replaceEnglishWithHome = link => {
+    if (link?.name === 'English') {
+      return {
+        ...link,
+        icon: 'fas fa-home',
+        name: '首页',
+        href: '/'
+      }
+    }
+    return link
   }
 
-  // 如果开启自定义菜单，则覆盖Page生成的菜单，同时隐藏 English
+  if (customNav) {
+    links = links.concat(customNav.map(replaceEnglishWithHome))
+  }
+
+  // 如果开启自定义菜单，则用“首页”替换原来的 English 菜单项
   if (siteConfig('CUSTOM_MENU')) {
-    links = (customMenu || []).filter(link => link?.name !== 'English')
+    links = (customMenu || []).map(replaceEnglishWithHome)
+  }
+
+  // 兜底：如果当前菜单里没有 English，则在顶部添加“首页”
+  if (!links.some(link => link?.name === '首页')) {
+    links.unshift({
+      icon: 'fas fa-home',
+      name: '首页',
+      href: '/'
+    })
   }
 
   if (!links || links.length === 0) {
