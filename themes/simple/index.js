@@ -36,7 +36,6 @@ const ArticleAround = dynamic(() => import('./components/ArticleAround'), {
   ssr: false
 })
 const ShareBar = dynamic(() => import('@/components/ShareBar'), { ssr: false })
-const TopBar = dynamic(() => import('./components/TopBar'), { ssr: false })
 const Header = dynamic(() => import('./components/Header'), { ssr: false })
 const NavBar = dynamic(() => import('./components/NavBar'), { ssr: false })
 const SideBar = dynamic(() => import('./components/SideBar'), { ssr: false })
@@ -77,7 +76,7 @@ const LayoutBase = props => {
         className={`${siteConfig('FONT_STYLE')} min-h-screen flex flex-col dark:text-gray-300  bg-white dark:bg-black scroll-smooth`}>
         <Style />
 
-        {siteConfig('SIMPLE_TOP_BAR', null, CONFIG) && <TopBar {...props} />}
+        {/* 顶部提示栏已隐藏 */}
 
         {/* 顶部LOGO */}
         <Header {...props} />
