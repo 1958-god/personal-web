@@ -37,6 +37,7 @@ const ArticleAround = dynamic(() => import('./components/ArticleAround'), {
 })
 const ShareBar = dynamic(() => import('@/components/ShareBar'), { ssr: false })
 const TopBar = dynamic(() => import('./components/TopBar'), { ssr: false })
+const Header = dynamic(() => import('./components/Header'), { ssr: false })
 const NavBar = dynamic(() => import('./components/NavBar'), { ssr: false })
 const SideBar = dynamic(() => import('./components/SideBar'), { ssr: false })
 const JumpToTopButton = dynamic(() => import('./components/JumpToTopButton'), {
@@ -78,7 +79,8 @@ const LayoutBase = props => {
 
         {siteConfig('SIMPLE_TOP_BAR', null, CONFIG) && <TopBar {...props} />}
 
-        {/* 顶部个人信息区域已隐藏 */}
+        {/* 顶部LOGO */}
+        <Header {...props} />
 
         {/* 导航栏 */}
         <NavBar {...props} />
