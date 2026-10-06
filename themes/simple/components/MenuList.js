@@ -56,13 +56,12 @@ export const MenuList = ({ customNav, customMenu }) => {
   ]
 
   if (customNav) {
-    // 隐藏默认的 English 菜单项
     links = links.concat(customNav.filter(link => link?.name !== 'English'))
   }
 
-  // 如果 开启自定义菜单，则覆盖Page生成的菜单
+  // 如果开启自定义菜单，则覆盖Page生成的菜单，同时隐藏 English
   if (siteConfig('CUSTOM_MENU')) {
-    links = customMenu
+    links = (customMenu || []).filter(link => link?.name !== 'English')
   }
 
   if (!links || links.length === 0) {
